@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  
+  --color-slate-950: hsl(222 47% 11%);
+  --color-indigo-600: hsl(263 70% 50%);
+  
+  --background: var(--color-slate-950);
+  --foreground: hsl(213 31% 91%);
+}
+
+:root {
+  --background: 222 47% 11%;
+  --foreground: 213 31% 91%;
+  --primary: 263 70% 50%;
+  --radius: 0.75rem;
+}
+
+body {
+  color: hsl(var(--foreground));
+  background: radial-gradient(circle at top left, hsl(222, 47%, 15%), hsl(var(--background)));
+  min-height: 100vh;
+}
+
+@utility glass {
+  background-color: rgb(255 255 255 / 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(255 255 255 / 0.1);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+@utility glass-indigo {
+  background-color: rgb(79 70 229 / 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgb(99 102 241 / 0.2);
+  box-shadow: 0 10px 15px -3px rgb(99 102 241 / 0.05);
+}
+
+@utility btn-primary {
+  background-color: var(--color-indigo-600);
+  color: white;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius);
+  transition: all 0.2s;
+  box-shadow: 0 10px 15px -3px rgb(79 70 229 / 0.2);
+  
+  &:hover {
+    background-color: hsl(263 70% 60%);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+@utility input-field {
+  width: 100%;
+  background-color: rgb(15 23 42 / 0.5);
+  border: 1px solid rgb(30 41 59);
+  border-radius: var(--radius);
+  padding: 1rem;
+  outline: none;
+  transition: all 0.2s;
+  color: rgb(241 245 249);
+  
+  &::placeholder {
+    color: rgb(71 85 105);
+  }
+  
+  &:focus {
+    border-color: var(--color-indigo-600);
+    box-shadow: 0 0 0 2px rgb(79 70 229 / 0.2);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
